@@ -19,7 +19,7 @@
         <div class="brand">紹馳 Drag Timer</div>
         <div class="sub">直線加速測試</div>
       </div>
-      <div id="gpsBadge" class="badge bad">GPS 未啟動</div>
+      <button id="gpsBadge" class="badge bad" type="button">GPS 未啟動</button>
     </header>
 
     <nav class="tabs">
@@ -40,10 +40,22 @@
           </div>
         </div>
 
+        <div class="gpsPanel">
+          <div class="gpsRow">
+            <b id="gpsTitle">GPS 狀態：未啟動</b>
+            <span id="gpsDot" class="gpsDot off"></span>
+          </div>
+          <div class="gpsGrid">
+            <div><span id="gpsAccuracy">--</span><small>精度</small></div>
+            <div><span id="gpsAge">--</span><small>更新</small></div>
+            <div><span id="gpsHint">按開始測試</span><small>狀態</small></div>
+          </div>
+        </div>
+
         <div id="countdown" class="countdown hidden">3</div>
 
         <div class="controls">
-          <button id="startBtn" class="primary">開始測試</button>
+          <button id="startBtn" class="primary">啟動 GPS / 開始</button>
           <button id="stopBtn" class="danger" disabled>停止</button>
           <button id="resetBtn" class="secondary">歸零</button>
         </div>
