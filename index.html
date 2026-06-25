@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#050505" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="紹馳 Drag" />
+  <title>紹馳 Drag Timer</title>
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="topbar">
+      <div>
+        <div class="brand">紹馳 Drag Timer</div>
+        <div class="sub">直線加速測試</div>
+      </div>
+      <div id="gpsBadge" class="badge bad">GPS 未啟動</div>
+    </header>
+
+    <nav class="tabs">
+      <button class="tab active" data-page="testPage">測試</button>
+      <button class="tab" data-page="historyPage">紀錄</button>
+      <button class="tab" data-page="settingsPage">設定</button>
+    </nav>
+
+    <main>
+      <section id="testPage" class="page active">
+        <div class="hero">
+          <div class="label">目前速度</div>
+          <div class="speed"><span id="speedNow">0</span><small>km/h</small></div>
+          <div class="grid3">
+            <div class="stat"><span id="elapsed">0.000</span><small>秒</small><b>時間</b></div>
+            <div class="stat"><span id="distanceNow">0.0</span><small>m</small><b>距離</b></div>
+            <div class="stat"><span id="maxSpeed">0</span><small>km/h</small><b>最高</b></div>
+          </div>
+        </div>
+
+        <div id="countdown" class="countdown hidden">3</div>
+
+        <div class="controls">
+          <button id="startBtn" class="primary">開始測試</button>
+          <button id="stopBtn" class="danger" disabled>停止</button>
+          <button id="resetBtn" class="secondary">歸零</button>
+        </div>
+
+        <div class="notice" id="statusText">按開始後，請允許定位。倒數完成後，超過起跑速度才會正式計時。</div>
+
+        <div class="cards">
+          <section class="card">
+            <h2>速度成績</h2>
+            <div id="speedResults" class="results"></div>
+          </section>
+          <section class="card">
+            <h2>距離成績</h2>
+            <div id="distanceResults" class="results"></div>
+          </section>
+        </div>
+      </section>
+
+      <section id="historyPage" class="page">
+        <div class="card">
+          <div class="row between">
+            <h2>歷史紀錄</h2>
+            <button id="clearHistoryBtn" class="small danger2">清除</button>
+          </div>
+          <div id="historyList" class="history empty">尚無紀錄</div>
+        </div>
+      </section>
+
+      <section id="settingsPage" class="page">
+        <div class="card settings">
+          <h2>設定</h2>
+          <label>起跑速度 km/h
+            <input id="launchSpeed" type="number" min="1" max="30" step="1" />
+          </label>
+          <label>自訂距離 m
+            <input id="customDistance" type="number" min="10" max="3000" step="1" />
+          </label>
+          <label>自動結束距離 m
+            <input id="autoStopDistance" type="number" min="60" max="5000" step="1" />
+          </label>
+          <label class="check"><input id="soundEnabled" type="checkbox" /> 聲音提示</label>
+          <button id="saveSettingsBtn" class="primary full">儲存設定</button>
+          <p class="hint">iPhone 內建 GPS 精度有限，短距離成績會有誤差。建議空曠道路測試，且注意安全。</p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
